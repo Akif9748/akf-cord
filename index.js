@@ -21,14 +21,15 @@ class Client extends EventEmitter {
         return await fetch(url, opts);
     }
 
-    async login() {
+    login(token = this.token) {
+        this.token = token;
         const ws = new WebSocket('wss://gateway.discord.gg/?v=10&encoding=json');
         this.ws = ws;
 
         ws.on('open', () => ws.send(JSON.stringify({
             op: 2,
             d: {
-                token: this.token,
+                token,
                 intents: this.intents,
                 properties: {
                     $os: process.platform,
@@ -38,7 +39,7 @@ class Client extends EventEmitter {
             }
         })));
 
-        ws.on('message', async data => {
+        ws.on('message', data => {
             const { t, op, d, s: seqnum } = JSON.parse(data);
             if (op == 10)
                 this.heartbeat = setInterval(() => ws.send(JSON.stringify({ op: 1, d: seqnum })), d.heartbeat_interval);
@@ -58,6 +59,7 @@ class Client extends EventEmitter {
 
             }
         });
+        return this;
     }
 
     setPresence(activity = { name: "Ready!", type: 3 }, status = "online") {
@@ -67,9 +69,9 @@ class Client extends EventEmitter {
         }));
     }
 
-    
+
 }
-module.exports = { 
+module.exports = {
     Client,
     avatarURL(user, size = 128, format = "jpg") {
         return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${format}?size=${size}`;

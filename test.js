@@ -1,6 +1,6 @@
 const { Client, avatarURL } = require('.');
 
-const client = new Client('token');
+const client = new Client("token").login();
 
 // eslint-disable-next-line no-unused-vars
 client.on("ready", _ready => {
@@ -22,5 +22,3 @@ client.on("interaction", async interaction => {
         ]
     });
 });
-
-client.login();
