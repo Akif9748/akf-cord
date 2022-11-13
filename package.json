@@ -1,0 +1,31 @@
+{
+  "name": "akf-cord",
+  "version": "1.0.0",
+  "description": "A lightweight discord API wrapper.",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^8.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "node-fetch": "^2.6.7"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akif9748/akf-cord.git"
+  },
+  "keywords": [
+    "discord",
+    "api",
+    "wrapper"
+  ],
+  "author": "Akif9748",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Akif9748/akf-cord/issues"
+  },
+  "homepage": "https://github.com/Akif9748/akf-cord#readme"
+}
