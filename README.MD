@@ -1,7 +1,7 @@
 # akf-cord
 A lightweight discord API wrapper. Only requires `ws`.
 
-Usage:
+## Usage:
 ```js
 const cord = require('akf-cord');
 
