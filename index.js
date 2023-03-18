@@ -56,6 +56,8 @@ class Client extends EventEmitter {
                     }, "POST");
                     this.emit("interaction", d);
                     break;
+                default:
+                    this.emit(t, d);
 
             }
         });
